@@ -1,0 +1,18 @@
+<div class="col-md-8">
+  <div class="card">
+    <div class="header">
+      <p style="float:right;"><a href="/skills"><i class="pe-7s-angle-left-circle"></i></a></p>
+      <h4 class="title">Edit Skill</h4>
+
+    </div>
+
+    <div class="content">
+
+      <%= bootstrap_form_for @skill do |f| %>
+          <%= f.text_field :skill_title%>
+          <%= f.text_area :skill_description%>
+          <%= f.submit "Save", :class => "btn btn-default"%>
+      <% end %>
+    </div>
+  </div>
+</div>

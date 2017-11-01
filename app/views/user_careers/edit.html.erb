@@ -1,0 +1,23 @@
+<div class="col-md-8">
+  <div class="card">
+
+    <div class="header">
+      <p style="float:right;"><%= link_to raw("<i class='pe-7s-angle-left-circle'></i>"), career_dashboard_path(@user_career) %></p>
+      <h4 class="title">Edit Career: <%= Career.find(@user_career.career_id).career_title  %></h4>
+
+    </div>
+
+
+    <div class="content">
+
+      <%= bootstrap_form_for @user_career do |f| %>
+          <%= f.date_field :career_start %>
+          <%= f.date_field :career_end %>
+          <%= f.text_area :career_description %>
+
+          <%= f.submit "Save", :class => "btn btn-default"%>
+
+      <% end %>
+    </div>
+  </div>
+</div>

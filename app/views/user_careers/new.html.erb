@@ -1,0 +1,24 @@
+<div class="col-md-8">
+  <div class="card">
+
+    <div class="header">
+      <p style="float:right;"><a href="/user_careers"><i class="pe-7s-angle-left-circle"></i></a></p>
+      <h4 class="title">New Career</h4>
+
+    </div>
+
+
+    <div class="content">
+
+      <%= bootstrap_form_for @user_career do |f| %>
+
+          <%= f.collection_select :career_id, Career.all, :id, :career_title %>
+          <%= f.date_field :career_start %>
+          <%= f.text_area :career_description %>
+
+          <%= f.submit "Save", :class => "btn btn-default"%>
+
+      <% end %>
+    </div>
+  </div>
+</div>

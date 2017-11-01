@@ -1,0 +1,8 @@
+<tr class="nested-fields">
+  <td><%= f.collection_select :skill_id, Skill.all, :id, :skill_title, hide_label: true %>
+    <%= f.hidden_field :activity_id %>
+  </td>
+  <td>
+    <%= link_to_remove_association raw("<i class='pe-7s-close-circle'></i>"), f %>
+  </td>
+</tr>

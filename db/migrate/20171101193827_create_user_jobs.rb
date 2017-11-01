@@ -1,0 +1,18 @@
+class CreateUserJobs < ActiveRecord::Migration[5.1]
+  def change
+    create_table :user_jobs do |t|
+      t.integer :user_career_id
+      t.integer :user_id
+      t.string :company
+      t.string :job_title
+      t.date  :job_start
+      t.date :job_end
+      t.text :job_description
+      t.string :status
+      t.timestamps
+    end
+
+    add_foreign_key "user_careers", "user_jobs", column: "user_career_id", name: "fk_job_career"
+    add_foreign_key "users", "user_jobs", column: "user_id", name: "fk_job_user"
+  end
+end

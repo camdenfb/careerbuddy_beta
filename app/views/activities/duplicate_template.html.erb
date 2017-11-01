@@ -1,0 +1,59 @@
+<div class="col-md-8">
+  <div class="card">
+
+    <div class="header">
+      <p style="float:right;"><a href="/activities"><i class="pe-7s-angle-left-circle"></i></a></p>
+      <h4 class="title">Edit Activity</h4>
+
+    </div>
+
+
+    <div class="content">
+
+      <%= bootstrap_form_for @activity do |f| %>
+
+          <%= f.text_area :activity_details%>
+          <%= f.date_field :activity_start %>
+          <%= f.select :activity_type, select_type %>
+          <script type="text/javascript">
+              //or onload
+              $('#activity_activity_type').change( function(){
+                  if ($('#activity_activity_type').val() == 'Personal') {
+                      $('#activity_job_id').hide();
+                      $('label[for="activity_job_id"]').hide();
+                  }
+                  else{
+                      $('#activity_job_id').show();
+                      $('label[for="activity_job_id"]').show();
+                  }
+              });
+          </script>
+          <!--fix job query-->
+          <%= f.collection_select :job_id, UserJob.all, :id, :getjob %>
+          <%= f.number_field :_time, label: "Time spent" %>
+          <%= f.select :_time_unit, select_time_unit, label: "Unit of Time" %>
+          <%= f.text_field :state %>
+
+          <table class="table table-hover table-striped">
+            <thead>
+            <tr>
+              <th>Skills</th>
+              <th></th>
+            </tr></thead>
+            <tbody class="skills">
+            <%= f.fields_for :activity_skills do |builder| %>
+                <%= render 'activity_skill_fields', f: builder %>
+            <% end %>
+            </tbody>
+          </table>
+
+          <div class="form-actions">
+            <%= link_to_add_association "Add Skill", f, :activity_skills, class: "btn btn-default", data: {association_insertion_node: ".skills", association_insertion_method: :prepend} %>
+            <%= f.submit "Save", :class => "btn btn-default" %>
+          </div>
+
+
+      <% end %>
+    </div>
+  </div>
+</div>

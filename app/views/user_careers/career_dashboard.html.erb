@@ -1,0 +1,100 @@
+<br>
+<br>
+
+<div class="row">
+
+  <div class="col-md-6">
+    <div class="card card-user">
+      <div class="content">
+        <div class="author">
+
+            <img class="avatar border-gray" src="https://i.pinimg.com/originals/c0/4a/f8/c04af819ec0bbc75b67c38b10e6fb670.png" alt="..."/>
+
+            <h4 class="title"><%= Career.find(@user_career.career_id).career_title  %><br />
+              <small>Since <%= @user_career.career_start.strftime("%B %Y")  %></small>
+            </h4>
+            <p class="description text-center"><%= @user_career.career_description %>
+            </p>
+
+          <br>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="<%= @career_progress %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= @career_progress %>%"> <%= number_to_percentage(@career_progress, precision: 1) %>
+            </div>
+          </div>
+          <hr>
+          <div class="text-center">
+            <a href="/user_careers"><i class='pe-7s-angle-left-circle'></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <%= link_to raw("<i class='pe-7s-pen'></i>"), edit_user_career_path(@user_career) %>&nbsp;&nbsp;&nbsp;&nbsp;
+            <%= link_to raw("<i class='pe-7s-close-circle'></i>"), @user_career, :confirm => "Are you sure?", :method => :delete %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="card">
+      <div class="header">
+          <div style="float:left;"><h4 class="title">Jobs</h4></div>
+          <div style="float:right;"><a href="/user_jobs/new"><i class='pe-7s-plus'></i></a></div>
+      </div>
+        <table class="table table-hover table-striped">
+          <thead>
+          <tr>
+            <th>Date Started</th>
+            <th>Job Title</th>
+            <th>Company</th>
+            <th></th>
+          </tr></thead>
+          <tbody>
+          <% @user_jobs.each do |job| %>
+              <tr>
+                <td><%= job.job_start.strftime("%B %-d#{","} %Y") %></td>
+                <td><%= link_to job.job_title, edit_user_job_path(job) %></td>
+                <td><%= job.company %></td>
+                <td><%= link_to raw("<i class='pe-7s-close-circle'></i>"), job, :confirm => "Are you sure?", :method => :delete %></td>
+                </td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+    </div>
+
+  </div><!-- end of col-6-->
+
+  <div class="col-md-6">
+    <div class="card">
+      <div class="header">
+        <div style="float:left;"><h4 class="title">Skills</h4></div>
+        <div style="float:right;"></div>
+      </div>
+
+      <div class="content">
+        <br>
+        <%= bootstrap_form_for @user_career do |f| %>
+            <table class="table table-hover table-striped">
+              <thead>
+              <tr>
+                <th>Skill</th>
+                <th>Weight</th>
+                <th></th>
+              </tr></thead>
+              <tbody class="skills">
+              <%= f.fields_for :career_skills do |builder| %>
+                  <%= render 'career_skill_fields', f: builder %>
+              <% end %>
+              </tbody>
+            </table>
+
+
+            <div class="form-actions">
+            <%= link_to_add_association "Add Skill", f, :career_skills, class: "btn btn-default", data: {association_insertion_node: ".skills", association_insertion_method: :prepend} %>
+              <%= f.submit "Save", :class => "btn btn-default"%>
+            </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+
+</div>

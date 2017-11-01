@@ -1,0 +1,24 @@
+<div class="col-md-8">
+  <div class="card">
+
+    <div class="header">
+      <p style="float:right;"><a href="/careers"><i class="pe-7s-angle-left-circle"></i></a></p>
+      <h4 class="title">Edit Career</h4>
+
+    </div>
+
+
+    <div class="content">
+
+      <%= bootstrap_form_for @career do |f| %>
+
+          <%= f.text_field :career_title%>
+
+          <%= f.text_area :career_description%>
+
+          <%= f.submit "Save", :class => "btn btn-default"%>
+
+      <% end %>
+    </div>
+  </div>
+</div>

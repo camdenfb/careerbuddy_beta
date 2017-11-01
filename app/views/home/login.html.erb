@@ -1,0 +1,23 @@
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4" align="center" style="padding-top:200px;">
+        <h3>Career Buddy</h3>
+        <% if current_user %>
+            <%= link_to "Logout", signout_path, id: "sign_out" %>
+        <% else %>
+            <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
+        <% end %>
+        <% flash.each do |key, value| %>
+            <div class="alert alert-warning" style="border-radius: 4px;">
+              <span><i class="pe-7s-bell"></i>  <%= value %></span>
+            </div>
+        <% end %>
+      </div>
+      <div class="col-md-4">
+      </div>
+    </div>
+  </div>
+</div>

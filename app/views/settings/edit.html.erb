@@ -1,0 +1,26 @@
+<div class="col-md-8">
+  <div class="card">
+
+    <div class="header">
+      <p style="float:right;"><a href="/"><i class="pe-7s-angle-left-circle"></i></a></p>
+      <h4 class="title">Edit Settings</h4>
+
+    </div>
+
+
+    <div class="content">
+
+      <%= bootstrap_form_for @setting do |f| %>
+
+          <%= f.number_field :required_skill_multiplier%>
+          <%= f.number_field :preferred_skill_multiplier%>
+          <%= f.number_field :desired_skill_multiplier%>
+          <%= f.number_field :total_career_hours%>
+          <%= f.number_field :total_skill_hours%>
+          <%= f.number_field :hours_in_a_day%>
+          <%= f.submit "Save", :class => "btn btn-default"%>
+
+      <% end %>
+    </div>
+  </div>
+</div>

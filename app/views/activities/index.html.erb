@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="header">
+          <div style="float:left;"><h4 class="title">Activity Log</h4></div>
+          <div style="float:right;"><a href="/activities/new"><i class='pe-7s-plus'></i></a></div>
+        </div>
+
+          <table class="table table-hover table-striped">
+            <thead>
+            <tr>
+              <th>Date Start</th>
+              <th>Activity</th>
+              <th>Hours Spent</th>
+              <th></th>
+            </tr></thead>
+            <tbody>
+            <% @activities.each do |a| %>
+              <tr>
+                <td><%= a.activity_start.strftime("%B %-d#{","} %Y") %></td>
+                <td><%= link_to truncate(a.activity_details), edit_activity_path(a) %></td>
+                <td><%= a.hours %></td>
+                <td><%= link_to raw("<i class='pe-7s-close-circle'></i>"), a, :confirm => "Are you sure?", :method => :delete %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+
+      </div>
+    </div>
+
+
+</div>
