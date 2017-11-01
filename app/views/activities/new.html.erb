@@ -28,7 +28,7 @@
               });
           </script>
           <!--fix job query-->
-          <%= f.collection_select :job_id, UserJob.where(), :id, :getjob %>
+          <%= f.collection_select :job_id, UserJob.where(:user_id == current_user.id), :id, :getjob %>
           <%= f.number_field :_time, label: "Time spent" %>
           <%= f.select :_time_unit, select_time_unit, label: "Unit of Time" %>
           <%= f.text_field :state %>
