@@ -10,7 +10,7 @@ class CreateUserCareers < ActiveRecord::Migration[5.1]
       t.timestamps
     end
 
-    add_foreign_key "users", "user_careers", column: "user_id", name: "fk_usercareer_user"
-    add_foreign_key "careers", "user_careers", column: "career_id", name: "fk_usercareer_career"
+    add_foreign_key "user_careers", "users", column: "user_id", name: "fk_usercareer_user"
+    add_foreign_key "user_careers", "careers", column: "career_id", name: "fk_usercareer_career"
   end
 end

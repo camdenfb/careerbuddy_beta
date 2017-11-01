@@ -6,7 +6,8 @@ class CreateActivitySkills < ActiveRecord::Migration[5.1]
       t.timestamps
     end
 
-    add_foreign_key "activities", "activity_skills", column: "activity_id", name: "fk_activityskills_activity"
-    add_foreign_key "skills", "activity_skills", column: "skill_id", name: "fk_activityskills_skill"
+    
+    add_foreign_key "activity_skills", "activities", column: "activity_id", name: "fk_activityskills_activity"
+    add_foreign_key "activity_skills", "skills", column: "skill_id", name: "fk_activityskills_skill"
   end
 end
