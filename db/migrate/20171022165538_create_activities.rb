@@ -12,7 +12,7 @@ class CreateActivities < ActiveRecord::Migration[5.1]
       t.timestamps
     end 
 
-    add_foreign_key "activities", "user_jobs", column: "job_id", name: "fk_activity_job"
-    add_foreign_key "activities", "users", column: "user_id", name: "fk_activity_user"
+    #add_foreign_key "activities", "user_jobs", column: "job_id", name: "fk_activity_job"
+    #add_foreign_key "activities", "users", column: "user_id", name: "fk_activity_user"
   end
 end

@@ -14,5 +14,9 @@ class CreateUserJobs < ActiveRecord::Migration[5.1]
     
     add_foreign_key "user_jobs", "user_careers", column: "user_career_id", name: "fk_job_career"
     add_foreign_key "user_jobs", "users", column: "user_id", name: "fk_job_user"
+
+
+    add_foreign_key "activities", "user_jobs", column: "job_id", name: "fk_activity_job"
+    add_foreign_key "activities", "users", column: "user_id", name: "fk_activity_user"
   end
 end
