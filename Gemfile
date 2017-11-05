@@ -36,6 +36,9 @@ gem 'bootstrap_form'
 gem "stroke-seven-rails"
 gem "omniauth-google-oauth2", "~> 0.2.1"
 gem 'cocoon'
+gem 'omniauth'
+gem 'omniauth-facebook', '1.4.0'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
