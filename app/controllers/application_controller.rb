@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :require_login
 
   def require_login
-    unless current_user
+    if current_user == nil
       redirect_to login_path
     end
   end
