@@ -55,7 +55,8 @@
                   <%= job.job_end.strftime("%B %-d#{","} %Y") %>
                   <% else %>
                   Present
-                  <% end %>
+                  <% end %><br>
+                  <%= job.job_description %>
                 </td>
                 </td>
                 <td><%= link_to raw("<i class='pe-7s-close-circle'></i>"), job, :confirm => "Are you sure?", :method => :delete %></td>

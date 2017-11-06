@@ -5,15 +5,13 @@ class ActivitiesController < ApplicationController
   end
 
   def index
-    @activities = Activity.where(user_id: session[:user_id]).where(state: "Real").all.order("activity_start DESC")
+    @activities = Activity.where(user_id: session[:user_id]).where(state: "Real").all
     @templates = Activity.where(user_id: session[:user_id]).where(state: "Template").all
     #@activities = Activity.order("career_title ASC").all.paginate(:page => params[:page], :per_page => 10)
   end
 
   def new
     @activity = Activity.new
-    @activity.state = "Real"
-
   end
 
   def create
@@ -28,6 +26,7 @@ class ActivitiesController < ApplicationController
     temp_hash.delete("_time_unit")
     temp_hash.merge!(hours: @time)
     temp_hash.merge!(user_id: session[:user_id])
+    temp_hash.merge!(state: "Real")
     @activity = Activity.create(temp_hash)
 
     if @activity.save

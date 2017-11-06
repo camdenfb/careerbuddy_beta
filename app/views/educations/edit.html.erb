@@ -1,0 +1,28 @@
+<div class="col-md-8">
+  <div class="card">
+
+    <div class="header">
+      <p style="float:right;"><a href="/"><i class="pe-7s-angle-left-circle"></i></a></p>
+      <h4 class="title">Edit Education</h4>
+
+    </div>
+
+
+    <div class="content">
+
+      <%= bootstrap_form_for @education do |f| %>
+
+          <%= f.text_field :school%>
+          <%= f.select :level, select_level %>
+          <%= f.text_field :degree%>
+          <%= f.text_field :field_of_study%>
+          <%= f.date_field :edu_start%>
+          <%= f.date_field :edu_end%>
+          <%= f.text_area :edu_description, label: "Honors and Organizations"%>
+
+          <%= f.submit "Save", :class => "btn btn-default"%>
+
+      <% end %>
+    </div>
+  </div>
+</div>

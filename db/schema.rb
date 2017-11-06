@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171101193827) do
+ActiveRecord::Schema.define(version: 20171106033802) do
 
   create_table "activities", force: :cascade do |t|
     t.integer "user_id"
@@ -45,6 +45,19 @@ ActiveRecord::Schema.define(version: 20171101193827) do
     t.string "career_title"
     t.string "career_description"
     t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "educations", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "school"
+    t.string "level"
+    t.string "degree"
+    t.string "field_of_study"
+    t.date "edu_start"
+    t.date "edu_end"
+    t.text "edu_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -100,6 +113,14 @@ ActiveRecord::Schema.define(version: 20171101193827) do
     t.string "name"
     t.string "oauth_token"
     t.datetime "oauth_expires_at"
+    t.text "summary"
+    t.string "email"
+    t.string "location"
+    t.string "contact_no"
+    t.string "website"
+    t.string "photo"
+    t.string "first_name"
+    t.string "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,1 +1,129 @@
-<h2>Welcome, children.</h2>
+<br>
+<br>
+
+<div class="row">
+
+  <div class="col-md-7">
+    <div class="card card-user">
+      <div class="content">
+        <div class="author">
+
+          <img class="avatar border-gray" src="https://i.pinimg.com/originals/c0/4a/f8/c04af819ec0bbc75b67c38b10e6fb670.png" alt="..."/>
+
+          <h4 class="title">
+            <% if current_user.first_name == nil %>
+                <%= current_user.name  %>
+            <% else %>
+                <%= current_user.fullname  %>
+            <% end %>
+            <br />
+            <small>
+              <% if current_user.summary == nil %>
+                  Add a short description about yourself
+              <% else %>
+                  <%= current_user.summary  %>
+              <% end %>
+            </small>
+          </h4>
+          <hr>
+          <div class="text-center">
+            <a href="/profile/edit"><i class='pe-7s-pen'></i></a>&nbsp;&nbsp;
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="card">
+      <div class="header">
+        <div style="float:left;"><h4 class="title">Work Experience</h4></div>
+      </div>
+      <table class="table table-hover table-striped">
+        <thead>
+        <tr>
+          <th></th>
+        </tr></thead>
+        <tbody>
+        <% @user_jobs.each do |job| %>
+            <tr>
+              <td>
+                <%= link_to job.job_title, edit_user_job_path(job) %><br>
+                <%= job.company %><br>
+                <%= job.job_start.strftime("%B %Y") %> -
+                <% if job.job_end != nil %>
+                    <%= job.job_end.strftime("%B %Y") %>
+                <% else %>
+                    Present
+                <% end %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+
+    <div class="card">
+      <div class="header">
+        <div style="float:left;"><h4 class="title">Education</h4></div>
+        <div style="float:right;"><a href="/educations/new"><i class='pe-7s-plus'></i></a></div>
+      </div>
+      <table class="table table-hover table-striped">
+        <tbody>
+        <% @educations.each do |edu| %>
+            <tr>
+              <td>
+                <%= link_to edu.level, edit_education_path(edu)  %><br>
+                <% if edu.degree == "" %>
+                <% else %>
+                    <%= edu.degree %><%= edu.field_of_study %><br>
+                <% end %>
+                <%= edu.school %><br>
+                <%= edu.edu_start.strftime("%B %Y") %> -
+                <% if edu.edu_end != nil %>
+                    <%= edu.edu_end.strftime("%B %Y") %>
+                <% else %>
+                    Present
+                <% end %><br>
+                <%= edu.edu_description %>
+              </td>
+              <td><%= link_to raw("<i class='pe-7s-close-circle'></i>"), edu, :confirm => "Are you sure?", :method => :delete %></td>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+
+  </div><!-- end of col-6-->
+
+  <div class="col-md-5">
+    <div class="card">
+      <div class="header">
+        <div style="float:left;"><h4 class="title">Skills</h4></div>
+        <div style="float:right;"></div>
+      </div>
+
+
+        <table class="table table-hover table-striped">
+          <tbody>
+            <% @results.each do |a| %>
+                <tr>
+                  <td><%= Skill.find(a["skillid"]).skill_title %></td>
+                </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+    </div>
+  </div>
+
+</div>
+
+<style>
+  .card-user .content {
+    min-height: 150px;
+  }
+</style>

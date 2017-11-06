@@ -11,11 +11,13 @@ Rails.application.routes.draw do
   get 'sessions/create'
   get 'sessions/destroy'
   get 'home/show'
-  
-  
+
+  get "/profile/edit", to: "users#edit", as: 'edit_profile'
+
   get "/career_dashboard/:id", to: "user_careers#career_dashboard", as: 'career_dashboard'
-  get "/templates/new", to: "activities#new_template", as: 'create_template'
-  get "/templates/:id/edit", to: "activities#duplicate_template", as: 'duplicate_template'
+
+  #get "/templates/new", to: "activities#new_template", as: 'create_template'
+  #get "/templates/:id/edit", to: "activities#duplicate_template", as: 'duplicate_template'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :skills
@@ -26,4 +28,6 @@ Rails.application.routes.draw do
   resources :settings
   resources :activities
   resources :user_skills
+  resources :users
+  resources :educations
 end
