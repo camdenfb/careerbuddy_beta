@@ -8,6 +8,7 @@ class HomeController < ApplicationController
     else
       @user_jobs = UserJob.where(user_id: session["user_id"]).order("job_start DESC")
       @educations = Education.where(user_id: session["user_id"]).order("edu_start DESC")
+
       #skills
       if Rails.env.development?
         @connection = ActiveRecord::Base.establish_connection(

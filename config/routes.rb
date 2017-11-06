@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   get 'home/show'
 
   get "/profile/edit", to: "users#edit", as: 'edit_profile'
-
   get "/career_dashboard/:id", to: "user_careers#career_dashboard", as: 'career_dashboard'
 
   #get "/templates/new", to: "activities#new_template", as: 'create_template'
