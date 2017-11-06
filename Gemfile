@@ -37,7 +37,7 @@ gem "stroke-seven-rails"
 gem "omniauth-google-oauth2", "~> 0.2.1"
 gem 'cocoon'
 gem 'omniauth'
-gem 'omniauth-facebook', '1.4.0'
+gem 'omniauth-facebook'
 gem 'railties', '~> 5.0', '>= 5.0.0.1'
 
 

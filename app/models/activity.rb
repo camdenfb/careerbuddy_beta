@@ -1,4 +1,5 @@
 class Activity < ApplicationRecord
+  validates :activity_details, :activity_start, :activity_type, :presence => true
 
   belongs_to :user
   belongs_to :job, optional: true

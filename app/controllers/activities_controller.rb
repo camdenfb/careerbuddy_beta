@@ -5,7 +5,7 @@ class ActivitiesController < ApplicationController
   end
 
   def index
-    @activities = Activity.where(user_id: session[:user_id]).where(state: "Real").all
+    @activities = Activity.where(user_id: session[:user_id]).where(state: "Real").all.order("activity_start DESC")
     @templates = Activity.where(user_id: session[:user_id]).where(state: "Template").all
     #@activities = Activity.order("career_title ASC").all.paginate(:page => params[:page], :per_page => 10)
   end

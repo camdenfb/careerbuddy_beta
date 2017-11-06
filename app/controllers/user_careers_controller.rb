@@ -9,7 +9,6 @@ class UserCareersController < ApplicationController
     params.require(:user_career).permit(:career_id, :career_start, :career_end, :career_description, career_skills_attributes: [:id, :skill_id, :weight, :user_career_id, :_destroy])
   end
 
-
   def index
     @user_careers = UserCareer.where(user_id: session[:user_id]).order("career_start ASC").all.paginate(:page => params[:page], :per_page => 10)
   end
@@ -53,7 +52,7 @@ class UserCareersController < ApplicationController
   def career_dashboard
     @user_career = UserCareer.find(params[:id])
     session[:selected_career] = @user_career.id
-    @user_jobs = UserJob.where(user_career_id: @user_career.id)
+    @user_jobs = UserJob.where(user_career_id: @user_career.id).order("job_start DESC")
 
     if Rails.env.development?
       @connection = ActiveRecord::Base.establish_connection(

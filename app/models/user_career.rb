@@ -1,6 +1,6 @@
 class UserCareer < ApplicationRecord
-  validates_uniqueness_of :career_id, scope: :user_id
   validates :career_id, :career_start, :presence => true
+  validates :career_id, :uniqueness =>  {:scope => :user_id}
 
   belongs_to :user
   belongs_to :career
