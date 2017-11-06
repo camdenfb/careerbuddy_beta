@@ -15,3 +15,5 @@
  *= require rails_bootstrap_forms
  *= require stroke-seven
  */
+
+textarea { resize: vertical; }
