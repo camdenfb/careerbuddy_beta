@@ -37,7 +37,7 @@ class User < ApplicationRecord
 
         if user.name == "Camilla Bontogon"
           user.role = "admin"
-        elsif user.name == "Karlo Tablizo"
+        elsif user.name == "Karlo A. Tablizo"
           user.role = "admin"
         else
           user.role = "user"
