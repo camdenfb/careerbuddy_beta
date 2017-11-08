@@ -4,13 +4,13 @@
       <div class="col-md-4">
       </div>
       <div class="col-md-4" align="center" style="padding-top:200px;">
-        <h3>Career Buddy</h3>
+        <h2>Careerbuddy.ph</h2>
         <% if current_user %>
             <%= link_to "Logout", signout_path, id: "sign_out" %>
         <% else %>
-            <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
-            <br>
-            <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+            <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in", :class => "btn btn-default" %>
+
+            <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", :class => "btn btn-default" %>
 
       <% end %>
         <% flash.each do |key, value| %>

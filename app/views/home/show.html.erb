@@ -8,7 +8,7 @@
       <div class="content">
         <div class="author">
 
-          <img class="avatar border-gray" src="https://i.pinimg.com/originals/c0/4a/f8/c04af819ec0bbc75b67c38b10e6fb670.png" alt="..."/>
+          <img class="avatar border-gray" src="https://cdn.pixabay.com/photo/2016/11/14/17/39/person-1824144_1280.png" alt="..."/>
 
           <h4 class="title">
             <% if current_user.first_name == nil %>
@@ -24,6 +24,12 @@
                   <%= current_user.summary  %>
               <% end %>
             </small>
+          <hr>
+            <div class="category">Location:  <%= current_user.location  %> <br>
+              Email:  <%= current_user.email  %><br>
+              Contact number:  <%= current_user.contact_no %><br>
+              Website:  <%= current_user.website  %>
+            </div>
           </h4>
           <hr>
           <div class="text-center">
