@@ -1,7 +1,7 @@
 class ActivitiesController < ApplicationController
 
   def allowed_params
-    params.require(:activity).permit(:activity_start, :activity_type, :job_id, :_time, :_time_unit, :activity_details, :state, activity_skills_attributes: [:id, :skill_id, :activity_id, :_destroy])
+    params.require(:activity).permit(:activity_start, :activity_type, :job_id, :_time, :_time_unit, :activity_details, :state, activity_competencies_attributes: [:id, :competency_id, :activity_id, :_destroy])
   end
 
   def index
@@ -68,18 +68,6 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find(params[:id])
     @activity.destroy
     redirect_to activities_path, :notice => "Activity deleted"
-  end
-
-  def new_template
-    @activity = Activity.new
-    @activity.state = "Template"
-  end
-
-  def duplicate_template
-    @activity = Activity.find(params[:id])
-    @activity._time = @activity.hours
-    @activity._time_unit = "Hours"
-    @activity.state = "Real"
   end
 
 end

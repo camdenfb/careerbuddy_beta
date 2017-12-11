@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CareerSkillTest < ActiveSupport::TestCase
+class CompetenciesControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

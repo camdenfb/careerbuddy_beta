@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171106033802) do
+ActiveRecord::Schema.define(version: 20171209203430) do
 
   create_table "activities", force: :cascade do |t|
     t.integer "user_id"
@@ -25,18 +25,17 @@ ActiveRecord::Schema.define(version: 20171106033802) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "activity_skills", force: :cascade do |t|
-    t.integer "activity_id"
-    t.integer "skill_id"
+  create_table "activity_competencies", force: :cascade do |t|
+    t.string "activity_id"
+    t.string "competency_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "career_skills", force: :cascade do |t|
-    t.integer "user_career_id"
-    t.integer "skill_id"
+  create_table "career_competencies", force: :cascade do |t|
+    t.string "career_id"
+    t.string "competency_id"
     t.string "weight"
-    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -45,6 +44,22 @@ ActiveRecord::Schema.define(version: 20171106033802) do
     t.string "career_title"
     t.string "career_description"
     t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "competencies", force: :cascade do |t|
+    t.string "competency_title"
+    t.string "competency_description"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "competency_skills", force: :cascade do |t|
+    t.string "skill_id"
+    t.string "competency_id"
+    t.string "weight"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

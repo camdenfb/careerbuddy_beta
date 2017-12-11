@@ -45,19 +45,19 @@
           <table class="table table-hover table-striped">
             <thead>
             <tr>
-              <th>Skills</th>
+              <th>Competencies</th>
               <th></th>
             </tr></thead>
-            <tbody class="skills">
-            <%= f.fields_for :activity_skills do |builder| %>
-                <%= render 'activity_skill_fields', f: builder %>
+            <tbody class="competencies">
+            <%= f.fields_for :activity_competencies do |builder| %>
+                <%= render 'activity_competency_fields', f: builder %>
             <% end %>
             </tbody>
           </table>
 
           <div class="form-actions">
-            <%= link_to_add_association "Add Skill", f, :activity_skills, class: "btn btn-default", data: {association_insertion_node: ".skills", association_insertion_method: :prepend} %>
-            <%= f.submit "Save", :class => "btn btn-default" %>
+            <%= link_to_add_association "Add Competency", f, :activity_competencies, class: "btn btn-default", data: {association_insertion_node: ".competencies", association_insertion_method: :append} %>
+            <%= f.submit "Save", :class => "btn btn-default"%>
           </div>
 
 

@@ -29,4 +29,6 @@ Rails.application.routes.draw do
   resources :user_skills
   resources :users
   resources :educations
+  resources :competencies
+  resources :user_competencies
 end

@@ -8,7 +8,7 @@
       <div class="content">
         <div class="author">
 
-          <img class="avatar border-gray" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.pngc" alt="..."/>
+          <img class="avatar border-gray" src="http://voice4thought.org/wp-content/uploads/2016/08/default1.jpg" alt="..."/>
 
           <h4 class="title">
             <% if current_user.first_name == nil %>
@@ -39,6 +39,70 @@
       </div>
     </div>
 
+    <div class="card">
+      <div class="header">
+        <div style="float:left;"><h4 class="title">Education</h4></div>
+        <div style="float:right;"><a href="/educations/new"><i class='pe-7s-plus'></i></a></div>
+      </div>
+      <table class="table table-hover table-striped">
+        <thead>
+        <tr>
+          <th></th>
+        </tr></thead>
+        <tbody>
+        <% @educations.each do |edu| %>
+            <tr>
+              <td>
+                <%= link_to edu.level, edit_education_path(edu)  %><br>
+                <% if edu.degree == "" %>
+                <% else %>
+                    <%= edu.degree %><br>
+                    <%= edu.field_of_study %><br>
+                <% end %>
+                <%= edu.school %><br>
+                <%= edu.edu_start.strftime("%B %Y") %> -
+                <% if edu.edu_end != nil %>
+                    <%= edu.edu_end.strftime("%B %Y") %>
+                <% else %>
+                    Present
+                <% end %><br>
+                <%= edu.edu_description %>
+              </td>
+              <td><%= link_to raw("<i class='pe-7s-close-circle'></i>"), edu, :confirm => "Are you sure?", :method => :delete %></td>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+
+  </div><!-- end of col-6-->
+  <div class="col-md-5">
+    <div class="card">
+      <div class="header">
+        <div style="float:left;"><h4 class="title">Career</h4></div>
+        <div style="float:right;"><a href="/user_careers/new"><i class='pe-7s-plus'></i></a></div>
+      </div>
+
+      <table class="table table-hover table-striped">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Start date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @user_careers.each do |career| %>
+            <tr>
+              <td><%= link_to Career.find(career.career_id).career_title, career_dashboard_path(career) %></td>
+              <td><%= career.career_start.strftime("%B %-d#{","} %Y") %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <div align="center"><%= will_paginate @user_careers %></div>
+    </div>
 
 
     <div class="card">
@@ -67,62 +131,6 @@
         <% end %>
         </tbody>
       </table>
-    </div>
-
-
-    <div class="card">
-      <div class="header">
-        <div style="float:left;"><h4 class="title">Education</h4></div>
-        <div style="float:right;"><a href="/educations/new"><i class='pe-7s-plus'></i></a></div>
-      </div>
-      <table class="table table-hover table-striped">
-        <tbody>
-        <% @educations.each do |edu| %>
-            <tr>
-              <td>
-                <%= link_to edu.level, edit_education_path(edu)  %><br>
-                <% if edu.degree == "" %>
-                <% else %>
-                    <%= edu.degree %><%= edu.field_of_study %><br>
-                <% end %>
-                <%= edu.school %><br>
-                <%= edu.edu_start.strftime("%B %Y") %> -
-                <% if edu.edu_end != nil %>
-                    <%= edu.edu_end.strftime("%B %Y") %>
-                <% else %>
-                    Present
-                <% end %><br>
-                <%= edu.edu_description %>
-              </td>
-              <td><%= link_to raw("<i class='pe-7s-close-circle'></i>"), edu, :confirm => "Are you sure?", :method => :delete %></td>
-              </td>
-            </tr>
-        <% end %>
-        </tbody>
-      </table>
-    </div>
-
-
-  </div><!-- end of col-6-->
-
-  <div class="col-md-5">
-    <div class="card">
-      <div class="header">
-        <div style="float:left;"><h4 class="title">Skills</h4></div>
-        <div style="float:right;"></div>
-      </div>
-
-
-        <table class="table table-hover table-striped">
-          <tbody>
-            <% @results.each do |a| %>
-                <tr>
-                  <td><%= Skill.find(a["skillid"]).skill_title %></td>
-                </tr>
-            <% end %>
-          </tbody>
-        </table>
-
     </div>
   </div>
 

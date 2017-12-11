@@ -16,7 +16,7 @@ class UserSkillsController < ApplicationController
           :database => "d3isejcb2j35k"
       )
     end
-    user_skills = "select activity_skills.skill_id as skillid, sum(activities.hours) as totalhours from activities, activity_skills where activities.id = activity_skills.activity_id and activities.user_id = '" + session[:user_id].to_s + "' group by activity_skills.skill_id, activities.user_id"
+    user_skills = "select competency_skills.skill_id as skillid, sum(activityhours) as totalhours from competency_skills, (select activity_competencies.competency_id as competencyid, sum(activities.hours) as activityhours from activities, activity_competencies where activities.id = activity_competencies.activity_id and activities.user_id = '" + session[:user_id].to_s + "' group by activity_competencies.competency_id) as competency_hours where competency_hours.competencyid = competency_skills.competency_id group by skillid"
     @results = @connection.connection.execute(user_skills)
 
   end

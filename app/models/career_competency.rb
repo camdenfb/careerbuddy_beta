@@ -1,0 +1,2 @@
+class CareerCompetency < ApplicationRecord
+end
