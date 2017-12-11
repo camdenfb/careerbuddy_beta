@@ -26,15 +26,15 @@ ActiveRecord::Schema.define(version: 20171209203430) do
   end
 
   create_table "activity_competencies", force: :cascade do |t|
-    t.string "activity_id"
-    t.string "competency_id"
+    t.integer "activity_id"
+    t.integer "competency_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "career_competencies", force: :cascade do |t|
-    t.string "career_id"
-    t.string "competency_id"
+    t.integer "career_id"
+    t.integer "competency_id"
     t.string "weight"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(version: 20171209203430) do
   end
 
   create_table "competency_skills", force: :cascade do |t|
-    t.string "skill_id"
-    t.string "competency_id"
+    t.integer "skill_id"
+    t.integer "competency_id"
     t.string "weight"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
