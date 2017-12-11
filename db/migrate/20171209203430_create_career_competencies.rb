@@ -1,8 +1,8 @@
 class CreateCareerCompetencies < ActiveRecord::Migration[5.1]
   def change
     create_table :career_competencies do |t|
-      t.string :career_id
-      t.string :competency_id
+      t.integer :career_id
+      t.integer :competency_id
       t.string :weight
       t.timestamps
     end

@@ -1,8 +1,8 @@
 class CreateActivityCompetencies < ActiveRecord::Migration[5.1]
   def change
     create_table :activity_competencies do |t|
-      t.string :activity_id
-      t.string :competency_id
+      t.integer :activity_id
+      t.integer :competency_id
       t.timestamps
     end
 
